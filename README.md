@@ -1,37 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Stack
+
+ - [Stack](https://cheery-squirrel-0e4497.netlify.app/): Stack is an application that uses AI to suggest a tech stack for programming projects.
+
+## Overview
+
+The goal of Stack is to provide developers with an AI-powered recommendation system for selecting a suitable tech stack for their programming projects. By leveraging the power of AI, Stack analyzes project requirements and suggests the most appropriate technologies to build efficient and scalable applications.
+
+## Features
+
+- **Platform Selection:** Choose the platforms you want to target, such as web, iOS, Android, or desktop.
+- **Project Description:** Provide a description of your project to help Stack understand your requirements.
+- **Tech Stack Suggestions:** Get a recommended tech stack based on your project description and platform selection.
+- **Documentation:** Access documentation for each suggested technology to learn more about its features and usage.
+
+## Tech Stack
+
+Stack utilizes the following technologies:
+
+- [React Native](https://reactnative.dev/docs/getting-started): JavaScript framework for building mobile apps.
+- [Axios](https://github.com/axios/axios): Promise-based HTTP client for the browser and Node.js.
+- [OpenAI](https://openai.com/): AI technology used for generating tech stack suggestions.
+- [Tailwind](https://tailwindcss.com): A utility-first CSS framework packed with classes
 
 ## Getting Started
 
-First, run the development server:
+Follow the steps below to get started with Stack:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository: `git clone https://github.com/Eli-BH/Stack.git`
+2. Install dependencies: `npm install`
+3. Obtain an API key from OpenAI and add it to the `.env` file: `OPENAI_API_KEY=<your_api_key>`
+4. Start the application: `npm start`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Contributions are welcome! If you would like to contribute to Stack, please create a new branch, make your changes, and submit a pull request. We appreciate your contributions!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Credits
 
-## Learn More
+Stack is developed and maintained by [Eli](https://github.com/Eli-BH).
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Stack is open-source software licensed under the [MIT License](LICENSE).
 
 ## Desktop
 <img width="1792" alt="Screenshot 2023-05-11 at 2 38 18 PM" src="https://github.com/Eli-BH/Stack/assets/61257073/84b4a2f1-2784-465d-9b70-3c9608a02a43">
