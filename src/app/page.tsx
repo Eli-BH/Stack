@@ -72,8 +72,12 @@ export default function Home() {
 
   return (
     <main className="main flex h-screen min-w-screen flex-col items-center justify-center">
-      <div className="w-screen h-screen md:h-5/6  md:w-3/4 lg:h-5/6 lg:w-1/2 bg-gradient-to-br from-red-500 to-fuchsia-500 via-yellow-500  p-2 md:rounded-lg">
-        <div className="bg-black flex flex-col justify-evenly  h-full w-full p-6 md:rounded-lg">
+      <div className="w-screen h-screen md:h-5/6  md:w-3/4 lg:h-5/6 lg:w-1/2 bg-gradient-to-br from-red-500 to-fuchsia-500 via-yellow-500  p-2 md:rounded-lg shadow-xl shadow-gray-900">
+        <div className="bg-black flex gap-3 flex-col justify-evenly  h-full w-full p-6 md:rounded-lg">
+          <h1 className="font-semibold font-comfortaa text-transparent text-5xl bg-clip-text bg-gradient-to-br from-pink-500 via-purple-400 to-yellow-600 mb-3 underline">
+            Stack
+          </h1>
+
           <div className="flex flex-col items-start w-full justify-evenly">
             <Checkbox
               checkboxValues={checkboxValues}
@@ -81,9 +85,9 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col items-start justify-evenly">
+          <div className="flex flex-col items-start mt-3 justify-evenly">
             <label
-              className="block text-gray-700 font-bold mb-2 text-white"
+              className="block text-gray-700 font-bold mb-4 text-white"
               htmlFor="description"
             >
               Describe your project
@@ -98,7 +102,7 @@ export default function Home() {
             ></textarea>
           </div>
 
-          <div className="w-full flex align-center justify-center">
+          <div className="w-full my-3 flex align-center justify-center">
             <div className="flex-1 h-1 border-2 border-white my-4 rounded-full"></div>
             <button
               onClick={handleButtonClick}

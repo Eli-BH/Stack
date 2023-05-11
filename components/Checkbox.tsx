@@ -29,9 +29,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-start w-full justify-evenly">
-      <p className="text-white font-bold mb-2 mr-4">Select your platforms</p>
-      <div className="flex flex-row w-full justify-evenly items-center">
+    <div className="flex gap-3 flex-col items-start w-full justify-evenly">
+      <p className="text-white font-bold mb-2 mr-4 ">Select your platforms</p>
+      <div className="flex flex-row w-full justify-evenly items-center mt-5 pt-3">
         <div className="mr-6">
           <input
             className="mr-2 leading-tight text-white"
