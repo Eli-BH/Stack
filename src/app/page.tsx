@@ -3,6 +3,11 @@ import "./pageStyles.css";
 import { useState } from "react";
 import Checkbox from "../../components/Checkbox";
 import { Configuration, OpenAIApi } from "openai";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+// minified version is also included
+// import 'react-toastify/dist/ReactToastify.min.css';
 
 interface CheckboxValues {
   web: boolean;
@@ -21,9 +26,7 @@ export default function Home() {
   const configuration = new Configuration({
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   });
-
   const openai = new OpenAIApi(configuration);
-
   const [description, setDescription] = useState("");
   const [checkboxValues, setCheckboxValues] = useState<CheckboxValues>({
     web: false,
@@ -34,19 +37,57 @@ export default function Home() {
   const [aiCompletion, setAICopmletion] = useState<ITechStack[]>([]);
   const [loading, setLoading] = useState(false);
 
+  // Format the prompt for OpenAI API
   const formatPrompt = (description: string, values: string[]) => {
     const prompt = `I'm a developer, I want to build an app for these platforms ${values}. Recommend me tech stack to build it with including useful APIs. Give me a list in an array of objects format: [{TechName: "", TechDescription: "", "TechDocs: "link to docs"}]Description of the app: ${description}. Give me only the array, no introductory words, just the array. `;
     return prompt;
   };
 
+  // Handle button click
+
   const handleButtonClick = async () => {
     setLoading(true);
+
     try {
+      // Get the selected platforms from the checkbox values
       const trueKeysArray: string[] = Object.keys(checkboxValues).filter(
         // @ts-ignore
         (key) => checkboxValues[key]
       );
 
+      // Check if a platform is selected
+      if (trueKeysArray.length === 0) {
+        toast.warn("Please select a platform", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Check if project description is provided
+      if (description.length === 0) {
+        toast.warn("Please describe your project", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Call OpenAI API to get tech stack recommendation
       const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [
@@ -60,11 +101,25 @@ export default function Home() {
       setLoading(false);
 
       if (content) {
+        // Parse the content as tech stack recommendations
         const techStack: ITechStack[] = JSON.parse(content) || [];
         console.log(techStack);
         setAICopmletion(techStack);
       }
     } catch (error) {
+      // Handle error
+      setLoading(false);
+      toast.error("Something went wrong, please try again", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+
       console.log(error);
     }
   };
@@ -141,6 +196,18 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </main>
   );
 }
