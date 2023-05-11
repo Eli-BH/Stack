@@ -35,11 +35,10 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const formatPrompt = (description: string, values: string[]) => {
-    const prompt = `I'm a developer, I want to build an app for these platforms ${values}. Recommend me tech stack to build it with. Give me a list in an array of objects format: [{TechName: "", TechDescription: "", "TechDocs: "link to docs"}]Description of the app: ${description}. Give me only the array, no introductory words, just the array. `;
+    const prompt = `I'm a developer, I want to build an app for these platforms ${values}. Recommend me tech stack to build it with including useful APIs. Give me a list in an array of objects format: [{TechName: "", TechDescription: "", "TechDocs: "link to docs"}]Description of the app: ${description}. Give me only the array, no introductory words, just the array. `;
     return prompt;
   };
 
-  console.log(aiCompletion);
   const handleButtonClick = async () => {
     setLoading(true);
     try {
@@ -55,16 +54,16 @@ export default function Home() {
         ],
       });
 
-      console.log(completion.data.choices[0].message?.content);
-      const content = JSON.stringify(
-        completion.data.choices[0].message?.content,
-        null,
-        2
-      );
+      const content: string | undefined =
+        completion.data.choices[0]?.message?.content;
+
       setLoading(false);
 
-      console.log(JSON.parse(content));
-      setAICopmletion(JSON.parse(content));
+      if (content) {
+        const techStack: ITechStack[] = JSON.parse(content) || [];
+        console.log(techStack);
+        setAICopmletion(techStack);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -136,7 +135,7 @@ export default function Home() {
 
             {loading && (
               <div className="flex justify-center items-center">
-                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
               </div>
             )}
           </div>
