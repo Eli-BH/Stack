@@ -74,7 +74,7 @@ export default function Home() {
     <main className="main flex h-screen min-w-screen flex-col items-center justify-center">
       <div className="w-screen h-screen md:h-5/6  md:w-3/4 lg:h-5/6 lg:w-1/2 bg-gradient-to-br from-red-500 to-fuchsia-500 via-yellow-500  p-2 md:rounded-lg shadow-xl shadow-gray-900">
         <div className="bg-black flex gap-3 flex-col justify-evenly  h-full w-full p-6 md:rounded-lg">
-          <h1 className="font-semibold font-comfortaa text-transparent text-5xl bg-clip-text bg-gradient-to-br from-pink-500 via-purple-400 to-yellow-600 mb-3 underline">
+          <h1 className="font-semibold font-comfortaa text-transparent text-5xl bg-clip-text bg-gradient-to-r from-pink-500 via-orange-500 to-orange-700 mb-3 ">
             Stack
           </h1>
 
