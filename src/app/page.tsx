@@ -89,7 +89,7 @@ export default function Home() {
 
       // Call OpenAI API to get tech stack recommendation
       const completion = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
         messages: [
           { role: "user", content: formatPrompt(description, trueKeysArray) },
         ],
